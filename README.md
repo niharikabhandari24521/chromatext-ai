@@ -32,7 +32,7 @@ Built with OpenCV and Gradio, it segments target colors in HSV and CIELAB color 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/<your-username>/chromatext-ai.git
+   git clone https://github.com/niharikabhandari24521/chromatext-ai.git
    cd chromatext-ai
    ```
 
