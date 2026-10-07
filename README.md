@@ -1,14 +1,3 @@
----
-title: ChromaText AI
-emoji: 🎨
-colorFrom: blue
-colorTo: purple
-sdk: gradio
-app_file: main.py
-pinned: false
-license: mit
----
-
 # ChromaText AI
 
 A lightweight computer vision tool that recolors objects in images using natural language text prompts (e.g. *"replace crimson red with emerald green"*, *"change red to royal blue"*, or *"make it gold"*).
@@ -25,6 +14,19 @@ Built with OpenCV and Gradio, it segments target colors in HSV and CIELAB color 
 - **Clean Masking & Feathering:** Uses morphological opening and closing to remove noise and fill pinholes, followed by Gaussian edge feathering for smooth transitions.
 - **Reflection Preservation:** Detects bright specular highlights and restores original pixels over them to keep glossy reflections intact.
 - **Interactive UI:** Runs locally or on cloud spaces via Gradio with side-by-side previews, mask visualizer, and fine-tuning sliders.
+
+---
+
+## Example Commands
+
+You can type commands in plain English or click the built-in quick preset buttons inside the app:
+
+| Command Type | Example Prompt | Behavior |
+| :--- | :--- | :--- |
+| **Two-Color Replacement** | `replace crimson red with emerald green` | Detects crimson areas and shifts hue/saturation to emerald green. |
+| **Direct Transition** | `change red to royal blue` | Replaces red pixels with royal blue while locking surface shadows. |
+| **Single-Color (Auto)** | `make it gold` | Automatically detects the dominant object color in the image and converts it to gold. |
+| **Casual Phrasing** | `turn it into royal blue` | Identifies target color and recolors the segmented object. |
 
 ---
 
@@ -45,7 +47,7 @@ Built with OpenCV and Gradio, it segments target colors in HSV and CIELAB color 
    ```bash
    python main.py
    ```
-   Open `http://127.0.0.1:7860` in your web browser.
+   Open `http://127.0.0.1:7860` in your web browser. A pre-rendered 3D sphere is loaded automatically so you can test with one click.
 
 ---
 
@@ -56,14 +58,6 @@ Built with OpenCV and Gradio, it segments target colors in HSV and CIELAB color 
 3. **Morphological Post-Processing:** Applies elliptical opening and closing filters to remove false-positive noise and bridge gaps.
 4. **Sub-Pixel Blending:** Creates a continuous alpha matte with Gaussian blur to prevent jagged borders.
 5. **Color Transfer:** Replaces hue while locking the original Value (in HSV) or Lightness $L^*$ (in CIELAB) to preserve shading and contours, followed by specular highlight re-overlay.
-
----
-
-## Deploying to Hugging Face Spaces
-
-1. Create a new Space at [huggingface.co/new-space](https://huggingface.co/new-space) using the **Gradio** SDK.
-2. Push or upload `main.py`, `requirements.txt`, and `README.md`.
-3. The Space will build and launch automatically.
 
 ---
 
